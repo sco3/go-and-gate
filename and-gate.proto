@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package time;
+
+option go_package = "and-gate/v2";
+
+
+service StartService {
+  rpc GetStartNanos(GetStartNanosRequest) returns (GetStartNanosResponse);
+}
+
+message GetStartNanosRequest {}
+
+
+message GetStartNanosResponse {
+  int64 start_nanos = 1;
+}
