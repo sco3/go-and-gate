@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package time;
 
-option go_package = "and-gate/v2";
+option go_package = "and-gate/v2/pb";
 
 
 service StartService {
