@@ -7,14 +7,14 @@ RUN go mod download
 
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o /app/bin/server main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -o /app/bin/and-gate main.go
 
 FROM alpine:latest
 
 WORKDIR /app
 
-COPY --from=builder /app/bin/server .
+COPY --from=builder /app/bin/and-gate .
 
 EXPOSE 5555
 
-ENTRYPOINT ["./server", "-start"]
+ENTRYPOINT ["./and-gate"]

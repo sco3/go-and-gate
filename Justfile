@@ -28,7 +28,7 @@ pingc:
     go build 
     ./and-gate -get
 
-docker:
+docker-image:
     docker build -t and-gate-server:latest .
     docker images
     
@@ -58,3 +58,11 @@ terr-apply:
     
 terr-destroy:
     cd terraform &&     terraform destroy --auto-approve
+    
+    
+kube-pingc:
+    kubectl delete pod client-test --ignore-not-found=true
+    kubectl run client-test --image=and-gate-server:latest --image-pull-policy=IfNotPresent -- -start=false -get -address and-gate-service:5555
+    sleep 2
+    kubectl logs client-test
+    kubectl delete pod client-test --ignore-not-found=true

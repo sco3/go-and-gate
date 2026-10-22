@@ -41,7 +41,9 @@ resource "kubernetes_deployment" "and_gate" {
           image             = "and-gate-server:latest"
           image_pull_policy = "IfNotPresent"
           name              = "server"
-
+          
+          args = ["-start", "-address", ":5555"]
+          
           port {
             container_port = 5555
             name           = "grpc"
