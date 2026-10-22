@@ -1,4 +1,8 @@
-# Сгенерировать gRPC код из proto-файлов
+# List targets
+default:
+    just --list
+
+# Generate gRPC code from proto files
 proto:
     mkdir -p pb
     protoc \
