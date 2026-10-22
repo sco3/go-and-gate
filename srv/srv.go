@@ -9,6 +9,7 @@ import (
 
 type Srv struct {
 	pb.UnimplementedStartServiceServer
-	server   *grpc.Server
-	listener net.Listener
+	server     *grpc.Server
+	listener   net.Listener
+	startNanos int64
 }
