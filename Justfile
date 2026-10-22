@@ -41,3 +41,8 @@ kind-create:
     
 kind-delete:
     kind delete cluster --name and-gate-cluster
+
+kind-load-image:
+    kind load docker-image and-gate-server:latest --name and-gate-cluster
+kube-port-forward:
+    kubectl port-forward svc/and-gate-service 5555:5555
