@@ -26,7 +26,8 @@ else
 end
 `
 
-func WaitStartupBarrier(ctx context.Context, rdb *redis.Client) error {
+func WaitStartupBarrier(rdb *redis.Client) error {
+	ctx := context.Background()
 	podName, err := os.Hostname()
 	if err != nil {
 		podName = "unknown-pod"
