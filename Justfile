@@ -14,7 +14,7 @@ proto:
 # Start server
 serve:
     go build 
-    ./and-gate -address :5555
+    ./and-gate -start
     
 # Smoke test with curl 
 ping:
@@ -24,7 +24,14 @@ ping:
       http://localhost:5555/time.StartService/GetStartNanos
 
 # Smoke test with client
-
 pingc:
-    go build ./util/client
-    ./util/client/client
+    go build 
+    ./and-gate -get
+
+docker:
+    docker build -t and-gate-server:latest .
+    docker images
+    
+docker-serve:
+    docker rm -f and-gate
+    docker run -d --name and-gate -p 5555:5555 and-gate-server:latest 
