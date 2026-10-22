@@ -8,10 +8,10 @@ import (
 )
 
 func NewServer(
-	port string,
+	address string,
 
 ) (*Srv, error) {
-	listener, err := net.Listen("tcp", port)
+	listener, err := net.Listen("tcp", address)
 	if err != nil {
 		return nil, err
 

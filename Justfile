@@ -14,7 +14,7 @@ proto:
 # Start server
 serve:
     go build 
-    ./and-gate
+    ./and-gate -address :5555
     
 # Smoke test with curl 
 ping:
