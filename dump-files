@@ -1,1 +1,1 @@
-find . -type f \( -name "*.go" -o -name "*.proto" -o -name "go.mod" -o -name "go.sum" \) -not -path "./.git/*" -print -exec echo "-----" \; -exec cat {} \; -exec echo "" \;
+find . -type f \( -name "*.go" -o name Justfile -o -name "*.proto" -o -name "go.mod" -o -name "go.sum" \) -not -path "./.git/*" -print -exec echo "-----" \; -exec cat {} \; -exec echo "" \;

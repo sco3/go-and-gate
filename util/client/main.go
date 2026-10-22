@@ -6,12 +6,15 @@ import (
 	"time"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 
 	"and-gate/v2/pb"
 )
 
 func main() {
-	conn, err := grpc.NewClient("localhost:5555", grpc.WithInsecure(), grpc.WithTimeout(5*time.Second))
+	conn, err := grpc.NewClient("localhost:5555",
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
+	)
 	if err != nil {
 		log.Fatalf("failed to connect: %v", err)
 	}
