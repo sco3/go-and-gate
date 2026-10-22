@@ -17,7 +17,7 @@ func (s *srv) GetStartNanos(
 	ctx context.Context,
 	req *pb.GetStartNanosRequest,
 ) (*pb.GetStartNanosResponse, error) {
-	return &pb.GetStartNanosResponse{StartNanos: 0}, nil
+	return &pb.GetStartNanosResponse{StartNanos: 314}, nil
 }
 
 func main() {
