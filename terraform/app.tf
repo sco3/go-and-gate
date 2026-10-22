@@ -1,17 +1,3 @@
-terraform {
-  required_providers {
-    kubernetes = {
-      source  = "hashicorp/kubernetes"
-      version = "~> 2.32.0"
-    }
-  }
-}
-
-provider "kubernetes" {
-  config_path    = "~/.kube/config"
-  config_context = "kind-and-gate-cluster"
-}
-
 resource "kubernetes_deployment" "and_gate" {
   metadata {
     name = "and-gate-server"
@@ -41,9 +27,8 @@ resource "kubernetes_deployment" "and_gate" {
           image             = "and-gate-server:latest"
           image_pull_policy = "IfNotPresent"
           name              = "server"
-          
-          args = ["-start", "-address", ":5555"]
-          
+          args              = ["-start", "-address", ":5555"]
+
           port {
             container_port = 5555
             name           = "grpc"
