@@ -35,3 +35,9 @@ docker:
 docker-serve:
     docker rm -f and-gate
     docker run -d --name and-gate -p 5555:5555 and-gate-server:latest 
+    
+kind-create:
+    kind create cluster --name and-gate-cluster
+    
+kind-delete:
+    kind delete cluster --name and-gate-cluster
