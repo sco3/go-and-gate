@@ -18,7 +18,11 @@ func GetStartTime(address *string) {
 	if err != nil {
 		log.Fatalf("failed to connect: %v", err)
 	}
-	defer conn.Close()
+	defer func() {
+		if err := conn.Close(); err != nil {
+			log.Printf("failed to close connection: %v", err)
+		}
+	}()
 
 	client := pb.NewStartServiceClient(conn)
 
