@@ -46,3 +46,15 @@ kind-load-image:
     kind load docker-image and-gate-server:latest --name and-gate-cluster
 kube-port-forward:
     kubectl port-forward svc/and-gate-service 5555:5555
+    
+terr-init:
+    cd terraform &&     terraform int
+
+terr-plan:
+    cd terraform &&     terraform plan
+    
+terr-apply:
+    cd terraform &&     terraform apply --auto-approve
+    
+terr-destroy:
+    cd terraform &&     terraform destroy --auto-approve
