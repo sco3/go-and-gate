@@ -7,7 +7,14 @@ option go_package = "and-gate/v2/pb";
 
 service StartService {
   rpc GetStartNanos(GetStartNanosRequest) returns (GetStartNanosResponse);
+  rpc StopServer(StopServerRequest) returns (StopServerResponse);
 }
+
+
+message StopServerRequest {}
+message StopServerResponse {}
+
+
 
 message GetStartNanosRequest {}
 

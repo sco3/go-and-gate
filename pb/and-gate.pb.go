@@ -21,6 +21,78 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type StopServerRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StopServerRequest) Reset() {
+	*x = StopServerRequest{}
+	mi := &file_and_gate_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StopServerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StopServerRequest) ProtoMessage() {}
+
+func (x *StopServerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_and_gate_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StopServerRequest.ProtoReflect.Descriptor instead.
+func (*StopServerRequest) Descriptor() ([]byte, []int) {
+	return file_and_gate_proto_rawDescGZIP(), []int{0}
+}
+
+type StopServerResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StopServerResponse) Reset() {
+	*x = StopServerResponse{}
+	mi := &file_and_gate_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StopServerResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StopServerResponse) ProtoMessage() {}
+
+func (x *StopServerResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_and_gate_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StopServerResponse.ProtoReflect.Descriptor instead.
+func (*StopServerResponse) Descriptor() ([]byte, []int) {
+	return file_and_gate_proto_rawDescGZIP(), []int{1}
+}
+
 type GetStartNanosRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -29,7 +101,7 @@ type GetStartNanosRequest struct {
 
 func (x *GetStartNanosRequest) Reset() {
 	*x = GetStartNanosRequest{}
-	mi := &file_and_gate_proto_msgTypes[0]
+	mi := &file_and_gate_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -41,7 +113,7 @@ func (x *GetStartNanosRequest) String() string {
 func (*GetStartNanosRequest) ProtoMessage() {}
 
 func (x *GetStartNanosRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_and_gate_proto_msgTypes[0]
+	mi := &file_and_gate_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -54,7 +126,7 @@ func (x *GetStartNanosRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStartNanosRequest.ProtoReflect.Descriptor instead.
 func (*GetStartNanosRequest) Descriptor() ([]byte, []int) {
-	return file_and_gate_proto_rawDescGZIP(), []int{0}
+	return file_and_gate_proto_rawDescGZIP(), []int{2}
 }
 
 type GetStartNanosResponse struct {
@@ -66,7 +138,7 @@ type GetStartNanosResponse struct {
 
 func (x *GetStartNanosResponse) Reset() {
 	*x = GetStartNanosResponse{}
-	mi := &file_and_gate_proto_msgTypes[1]
+	mi := &file_and_gate_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -78,7 +150,7 @@ func (x *GetStartNanosResponse) String() string {
 func (*GetStartNanosResponse) ProtoMessage() {}
 
 func (x *GetStartNanosResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_and_gate_proto_msgTypes[1]
+	mi := &file_and_gate_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -91,7 +163,7 @@ func (x *GetStartNanosResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStartNanosResponse.ProtoReflect.Descriptor instead.
 func (*GetStartNanosResponse) Descriptor() ([]byte, []int) {
-	return file_and_gate_proto_rawDescGZIP(), []int{1}
+	return file_and_gate_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetStartNanosResponse) GetStartNanos() int64 {
@@ -105,13 +177,17 @@ var File_and_gate_proto protoreflect.FileDescriptor
 
 const file_and_gate_proto_rawDesc = "" +
 	"\n" +
-	"\x0eand-gate.proto\x12\x04time\"\x16\n" +
+	"\x0eand-gate.proto\x12\x04time\"\x13\n" +
+	"\x11StopServerRequest\"\x14\n" +
+	"\x12StopServerResponse\"\x16\n" +
 	"\x14GetStartNanosRequest\"8\n" +
 	"\x15GetStartNanosResponse\x12\x1f\n" +
 	"\vstart_nanos\x18\x01 \x01(\x03R\n" +
-	"startNanos2X\n" +
+	"startNanos2\x99\x01\n" +
 	"\fStartService\x12H\n" +
-	"\rGetStartNanos\x12\x1a.time.GetStartNanosRequest\x1a\x1b.time.GetStartNanosResponseB\x10Z\x0eand-gate/v2/pbb\x06proto3"
+	"\rGetStartNanos\x12\x1a.time.GetStartNanosRequest\x1a\x1b.time.GetStartNanosResponse\x12?\n" +
+	"\n" +
+	"StopServer\x12\x17.time.StopServerRequest\x1a\x18.time.StopServerResponseB\x10Z\x0eand-gate/v2/pbb\x06proto3"
 
 var (
 	file_and_gate_proto_rawDescOnce sync.Once
@@ -125,16 +201,20 @@ func file_and_gate_proto_rawDescGZIP() []byte {
 	return file_and_gate_proto_rawDescData
 }
 
-var file_and_gate_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_and_gate_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_and_gate_proto_goTypes = []any{
-	(*GetStartNanosRequest)(nil),  // 0: time.GetStartNanosRequest
-	(*GetStartNanosResponse)(nil), // 1: time.GetStartNanosResponse
+	(*StopServerRequest)(nil),     // 0: time.StopServerRequest
+	(*StopServerResponse)(nil),    // 1: time.StopServerResponse
+	(*GetStartNanosRequest)(nil),  // 2: time.GetStartNanosRequest
+	(*GetStartNanosResponse)(nil), // 3: time.GetStartNanosResponse
 }
 var file_and_gate_proto_depIdxs = []int32{
-	0, // 0: time.StartService.GetStartNanos:input_type -> time.GetStartNanosRequest
-	1, // 1: time.StartService.GetStartNanos:output_type -> time.GetStartNanosResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	2, // 0: time.StartService.GetStartNanos:input_type -> time.GetStartNanosRequest
+	0, // 1: time.StartService.StopServer:input_type -> time.StopServerRequest
+	3, // 2: time.StartService.GetStartNanos:output_type -> time.GetStartNanosResponse
+	1, // 3: time.StartService.StopServer:output_type -> time.StopServerResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -151,7 +231,7 @@ func file_and_gate_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_and_gate_proto_rawDesc), len(file_and_gate_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

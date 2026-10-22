@@ -20,6 +20,7 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	StartService_GetStartNanos_FullMethodName = "/time.StartService/GetStartNanos"
+	StartService_StopServer_FullMethodName    = "/time.StartService/StopServer"
 )
 
 // StartServiceClient is the client API for StartService service.
@@ -27,6 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type StartServiceClient interface {
 	GetStartNanos(ctx context.Context, in *GetStartNanosRequest, opts ...grpc.CallOption) (*GetStartNanosResponse, error)
+	StopServer(ctx context.Context, in *StopServerRequest, opts ...grpc.CallOption) (*StopServerResponse, error)
 }
 
 type startServiceClient struct {
@@ -47,11 +49,22 @@ func (c *startServiceClient) GetStartNanos(ctx context.Context, in *GetStartNano
 	return out, nil
 }
 
+func (c *startServiceClient) StopServer(ctx context.Context, in *StopServerRequest, opts ...grpc.CallOption) (*StopServerResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(StopServerResponse)
+	err := c.cc.Invoke(ctx, StartService_StopServer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // StartServiceServer is the server API for StartService service.
 // All implementations must embed UnimplementedStartServiceServer
 // for forward compatibility.
 type StartServiceServer interface {
 	GetStartNanos(context.Context, *GetStartNanosRequest) (*GetStartNanosResponse, error)
+	StopServer(context.Context, *StopServerRequest) (*StopServerResponse, error)
 	mustEmbedUnimplementedStartServiceServer()
 }
 
@@ -64,6 +77,9 @@ type UnimplementedStartServiceServer struct{}
 
 func (UnimplementedStartServiceServer) GetStartNanos(context.Context, *GetStartNanosRequest) (*GetStartNanosResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetStartNanos not implemented")
+}
+func (UnimplementedStartServiceServer) StopServer(context.Context, *StopServerRequest) (*StopServerResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method StopServer not implemented")
 }
 func (UnimplementedStartServiceServer) mustEmbedUnimplementedStartServiceServer() {}
 func (UnimplementedStartServiceServer) testEmbeddedByValue()                      {}
@@ -104,6 +120,24 @@ func _StartService_GetStartNanos_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _StartService_StopServer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StopServerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StartServiceServer).StopServer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StartService_StopServer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StartServiceServer).StopServer(ctx, req.(*StopServerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // StartService_ServiceDesc is the grpc.ServiceDesc for StartService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +148,10 @@ var StartService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetStartNanos",
 			Handler:    _StartService_GetStartNanos_Handler,
+		},
+		{
+			MethodName: "StopServer",
+			Handler:    _StartService_StopServer_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
