@@ -28,6 +28,13 @@ pingc:
     go build 
     ./and-gate -get
 
+it:
+   go build
+   ./and-gate -start &
+   sleep .3
+   ./and-gate -get
+   ./and-gate -stop 
+
 docker-image:
     docker build -t and-gate-server:latest .
     docker images

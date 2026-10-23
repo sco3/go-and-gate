@@ -7,6 +7,6 @@ import (
 
 func PrintParams() {
 	flag.VisitAll(func(f *flag.Flag) {
-		fmt.Printf("-%s Value: %v\n", f.Name, f.Value.String())
+		fmt.Printf("%14s Value: %v\n", "-"+f.Name, f.Value.String())
 	})
 }

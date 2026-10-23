@@ -17,7 +17,8 @@ func NewServer(
 
 	}
 	server := grpc.NewServer()
-	srv := Srv{server: server, listener: listener}
+	redisClient := NewRedisClient()
+	srv := Srv{server: server, listener: listener, redis: redisClient}
 	pb.RegisterStartServiceServer(server, &srv)
 	return &srv, nil
 
