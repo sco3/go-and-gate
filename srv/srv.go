@@ -14,4 +14,5 @@ type Srv struct {
 	listener   net.Listener
 	startNanos int64
 	redis      *redis.Client
+	host       string
 }

@@ -5,9 +5,9 @@ import (
 	"log"
 )
 
-func Start(address *string) {
+func Start(address *string, host *string) {
 
-	server, err := srv.NewServer(*address)
+	server, err := srv.NewServer(*address, *host)
 	if err != nil {
 		log.Fatal(err)
 	}

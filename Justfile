@@ -29,6 +29,7 @@ pingc:
     ./and-gate -get
 
 it:
+   docker rm -f redis-server || echo "ok"
    docker run -d --name redis-server -p 6379:6379 redis
    go build
    EXPECTED_REPLICAS=1 ./and-gate -start &

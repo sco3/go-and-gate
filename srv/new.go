@@ -9,6 +9,7 @@ import (
 
 func NewServer(
 	address string,
+	host string,
 
 ) (*Srv, error) {
 	listener, err := net.Listen("tcp", address)
@@ -18,7 +19,10 @@ func NewServer(
 	}
 	server := grpc.NewServer()
 	redisClient := NewRedisClient()
-	srv := Srv{server: server, listener: listener, redis: redisClient}
+	srv := Srv{
+		server: server, listener: listener, redis: redisClient,
+		host: host,
+	}
 	pb.RegisterStartServiceServer(server, &srv)
 	return &srv, nil
 

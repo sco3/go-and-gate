@@ -8,15 +8,15 @@ import (
 )
 
 func NewRedisClient() *redis.Client {
-	const REDIS_ADDR = "REDIS_ADDR"
-	const DEFAULT_REDIS_ADDRESS = "localhost:6379"
-	redisAddr := os.Getenv(REDIS_ADDR)
+	const EnvRedisAddr = "REDIS_ADDR"
+	const EnvDefaultRedisAddress = "localhost:6379"
+	redisAddr := os.Getenv(EnvRedisAddr)
 	if redisAddr == "" {
 		log.Printf(
 			"Redist address %s not set, default: %s",
-			REDIS_ADDR, DEFAULT_REDIS_ADDRESS,
+			EnvRedisAddr, EnvDefaultRedisAddress,
 		)
-		redisAddr = DEFAULT_REDIS_ADDRESS
+		redisAddr = EnvDefaultRedisAddress
 	}
 
 	return redis.NewClient(&redis.Options{

@@ -11,11 +11,14 @@ func main() {
 	getTimeFlag := flag.Bool("get", false, "Get start time")
 
 	address := flag.String("address", ":5555", "Address for gRPC server to listen on")
+
+	host := flag.String("host", ":5555", "Address for gRPC server to listen on")
+
 	flag.Parse()
 
 	if *startFlag {
 		util.PrintParams()
-		util.Start(address)
+		util.Start(address, host)
 	} else if *stopFlag {
 		util.PrintParams()
 		util.Stop(address)
