@@ -29,13 +29,17 @@ pingc:
     ./and-gate -get
 
 it:
-   docker rm -f redis-server || echo "ok"
+   docker rm -f redis-server 2>/dev/null|| true
    docker run -d --name redis-server -p 6379:6379 redis
    go build
-   EXPECTED_REPLICAS=1 ./and-gate -start &
+   EXPECTED_REPLICAS=2 ./and-gate -start -host one -address :5551 &
+   EXPECTED_REPLICAS=2 ./and-gate -start -host two -address :5552 &
    sleep .3
-   ./and-gate -get
-   ./and-gate -stop
+   ./and-gate -get -address :5551
+   ./and-gate -get -address :5552
+   ./and-gate -stop -address :5551
+   ./and-gate -stop -address :5552
+
    docker rm -f redis-server
 
 docker-image:

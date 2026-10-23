@@ -12,7 +12,7 @@ func main() {
 
 	address := flag.String("address", ":5555", "Address for gRPC server to listen on")
 
-	host := flag.String("host", ":5555", "Address for gRPC server to listen on")
+	host := flag.String("host", "", "Host/Pod name for redis distributed barrier")
 
 	flag.Parse()
 

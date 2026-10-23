@@ -63,7 +63,7 @@ func WaitStartupBarrier(rdb *redis.Client, podName string) error {
 		res, err := script.Run(ctx, rdb, []string{barrierKey}, podName, expectedReplicas, ttlSec).Int()
 		if err != nil {
 			log.Printf("[%s] Error running barrier script: %v, retrying...", podName, err)
-			time.Sleep(500 * time.Millisecond)
+			time.Sleep(50 * time.Millisecond)
 			continue
 		}
 
