@@ -29,11 +29,13 @@ pingc:
     ./and-gate -get
 
 it:
+   docker run -d --name redis-server -p 6379:6379 redis
    go build
-   ./and-gate -start &
+   EXPECTED_REPLICAS=1 ./and-gate -start &
    sleep .3
    ./and-gate -get
-   ./and-gate -stop 
+   ./and-gate -stop
+   docker rm -f redis-server
 
 docker-image:
     docker build -t and-gate-server:latest .

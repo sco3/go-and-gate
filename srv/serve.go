@@ -6,7 +6,9 @@ import (
 )
 
 func (s *Srv) Serve() error {
-	log.Printf("serve")
+
+	WaitStartupBarrier(s.redis)
+	log.Printf("serve\n")
 	s.startNanos = time.Now().UnixNano()
 	log.Printf("Start: %v", s.startNanos)
 	return s.server.Serve(s.listener)

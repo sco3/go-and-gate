@@ -25,6 +25,7 @@ else
     return 0
 end
 `
+const EXPECTED_REPLICAS = "EXPECTED_REPLICAS"
 
 func WaitStartupBarrier(rdb *redis.Client) error {
 	ctx := context.Background()
@@ -34,14 +35,17 @@ func WaitStartupBarrier(rdb *redis.Client) error {
 	}
 
 	expectedReplicas := 0
-	if val := os.Getenv("EXPECTED_REPLICAS"); val != "" {
+
+	if val := os.Getenv(EXPECTED_REPLICAS); val != "" {
 		if parsed, err := strconv.Atoi(val); err == nil {
 			expectedReplicas = parsed
 		}
 	}
 
 	if expectedReplicas <= 0 {
-		log.Printf("[%s] Startup barrier is disabled (EXPECTED_REPLICAS not set). Skipping.", podName)
+		log.Printf("[%s] Startup barrier is disabled (%s not set). Skipping.",
+			podName, EXPECTED_REPLICAS,
+		)
 		return nil
 	}
 
